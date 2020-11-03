@@ -24,10 +24,8 @@ public class CharacterMovement : MonoBehaviour
 
     private void UpdateMovement()
     {
-        Vector2 newPosition = rb2D.position + (inputs.MovementDirection.normalized
+        rb2D.velocity = (inputs.MovementDirection.normalized
                     * movementSpeed * Time.fixedDeltaTime);
-
-        rb2D.MovePosition(newPosition);
     }
 
     private void UpdateRotation()

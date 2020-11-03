@@ -135,10 +135,10 @@ GameObject:
   - component: {fileID: 86862522}
   - component: {fileID: 86862521}
   - component: {fileID: 86862524}
-  - component: {fileID: 86862526}
   - component: {fileID: 86862525}
+  - component: {fileID: 86862526}
   m_Layer: 0
-  m_Name: Triangle
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a7eeae61b49ee49ae44a8929daeb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 200
 --- !u!212 &86862522
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 86862520}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8135602, y: 1.7966104, z: 0}
+  m_LocalPosition: {x: -3.91, y: 1.7966104, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -253,8 +253,8 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!60 &86862526
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -280,14 +280,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.02, y: 0.19}
-      - {x: -0.14999999, y: 0.19}
-      - {x: -0.22999999, y: 0.07}
-      - {x: -0.22999999, y: -0.049999997}
-      - {x: -0.12, y: -0.19}
-      - {x: -0.01, y: -0.19}
-      - {x: 0.22999999, y: -0.06}
-      - {x: 0.22999999, y: 0.07}
+    - - {x: -0.063782945, y: 0.19136828}
+      - {x: -0.09527148, y: 0.19410473}
+      - {x: -0.23273656, y: 0.016639657}
+      - {x: -0.22999999, y: -0.013058111}
+      - {x: -0.095371835, y: -0.18863183}
+      - {x: -0.064728506, y: -0.18726343}
+      - {x: 0.22726366, y: -0.023058232}
+      - {x: 0.23136827, y: 0.020744272}
 --- !u!1 &744474279
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 744474281}
   - component: {fileID: 744474280}
   m_Layer: 0
-  m_Name: squear
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -372,7 +372,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2baf60e0bb85d4d89ab9ca678aabcad4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: efb607c5bcae4bb48827223c001f0d73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -391,8 +391,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744474279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.325, y: 2.048, z: 0}
-  m_LocalScale: {x: 0.57559013, y: 0.47122687, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
