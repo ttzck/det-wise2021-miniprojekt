@@ -6,14 +6,11 @@ public class CharacterMovement : MonoBehaviour
 
     private ICharacterMovementInputs inputs;
     private Rigidbody2D rb2D;
+
     private void Start()
     {
         inputs = GetComponent<ICharacterMovementInputs>();
         rb2D = GetComponent<Rigidbody2D>();
-        if (inputs == null)
-        {
-            Debug.LogError($"Missing {nameof(ICharacterMovementInputs)} Component", gameObject);
-        }
     }
 
     private void FixedUpdate()
@@ -24,15 +21,13 @@ public class CharacterMovement : MonoBehaviour
 
     private void UpdateMovement()
     {
-        rb2D.velocity = (inputs.MovementDirection.normalized
-                    * movementSpeed);
+        rb2D.velocity = inputs.MovementDirection.normalized * movementSpeed;
     }
 
     private void UpdateRotation()
     {
-        Vector2 point = inputs.RotationTarget;
-        float AngleRad = Mathf.Atan2(point.y - transform.position.y, point.x - transform.position.x);
-        float AngleDeg = (Mathf.Rad2Deg) * AngleRad;
-        rb2D.rotation = AngleDeg;
+        Vector2 rotationDirection = inputs.RotationTarget - (Vector2)transform.position;
+        float AngleRad = Mathf.Atan2(rotationDirection.y, rotationDirection.x);
+        rb2D.rotation = (Mathf.Rad2Deg) * AngleRad;
     }
 }

@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputHandler : MonoBehaviour, ICharacterMovementInputs,ICharacterShootingInputs
+public class InputHandler : MonoBehaviour, ICharacterMovementInputs, ICharacterShootingInputs
 {
     public Vector2 MovementDirection { get; private set; }
+
     public Vector2 RotationTarget { get; private set; }
 
     public bool IsShooting { get; private set; }
+
     private Camera cam;
+
+    private static readonly (KeyCode, Vector2)[] movementInputMappings =
+    {
+        (KeyCode.W, Vector2.up),
+        (KeyCode.A, Vector2.left),
+        (KeyCode.S, Vector2.down),
+        (KeyCode.D, Vector2.right)
+    };
 
     private void Start()
     {
@@ -20,7 +30,6 @@ public class InputHandler : MonoBehaviour, ICharacterMovementInputs,ICharacterSh
         UpdateRotationTarget();
         UpdateMovementDirection();
         UpdateIsShooting();
-
     }
 
     private void UpdateRotationTarget()
@@ -32,24 +41,12 @@ public class InputHandler : MonoBehaviour, ICharacterMovementInputs,ICharacterSh
     {
         Vector2 input = Vector2.zero;
 
-        if (Input.GetKey(KeyCode.A))
+        foreach ((var key, var vector) in movementInputMappings)
         {
-            input += Vector2.left;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            input += Vector2.right;
-        }
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            input += Vector2.up;
-        }
-
-        if (Input.GetKey(KeyCode.S))
-        {
-            input += Vector2.down;
+            if (Input.GetKey(key))
+            {
+                input += vector;
+            }
         }
 
         MovementDirection = input.normalized;

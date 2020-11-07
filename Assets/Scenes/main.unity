@@ -132,10 +132,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 86862523}
-  - component: {fileID: 86862522}
   - component: {fileID: 86862521}
   - component: {fileID: 86862524}
   - component: {fileID: 86862527}
+  - component: {fileID: 86862522}
   - component: {fileID: 86862525}
   - component: {fileID: 86862526}
   m_Layer: 0
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2742998467387344623, guid: f45429a11645f4670bd4978e3e9c23bf, type: 3}
-  cooldown: 1
+  cooldownDuration: 1
 --- !u!1 &744474279
 GameObject:
   m_ObjectHideFlags: 0
