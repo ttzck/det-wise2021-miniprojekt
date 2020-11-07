@@ -25,7 +25,7 @@ public class CharacterMovement : MonoBehaviour
     private void UpdateMovement()
     {
         rb2D.velocity = (inputs.MovementDirection.normalized
-                    * movementSpeed * Time.fixedDeltaTime);
+                    * movementSpeed);
     }
 
     private void UpdateRotation()

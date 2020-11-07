@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputHandler : MonoBehaviour, ICharacterMovementInputs
+public class InputHandler : MonoBehaviour, ICharacterMovementInputs,ICharacterShootingInputs
 {
     public Vector2 MovementDirection { get; private set; }
     public Vector2 RotationTarget { get; private set; }
 
+    public bool IsShooting { get; private set; }
     private Camera cam;
 
     private void Start()
@@ -16,16 +17,18 @@ public class InputHandler : MonoBehaviour, ICharacterMovementInputs
 
     private void Update()
     {
-        UpdateWorldMousePosition();
-        UpdateMovementInput();
+        UpdateRotationTarget();
+        UpdateMovementDirection();
+        UpdateIsShooting();
+
     }
 
-    private void UpdateWorldMousePosition()
+    private void UpdateRotationTarget()
     {
         RotationTarget = cam.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    private void UpdateMovementInput()
+    private void UpdateMovementDirection()
     {
         Vector2 input = Vector2.zero;
 
@@ -50,5 +53,10 @@ public class InputHandler : MonoBehaviour, ICharacterMovementInputs
         }
 
         MovementDirection = input.normalized;
+    }
+
+    private void UpdateIsShooting()
+    {
+        IsShooting = Input.GetMouseButton(0) || Input.GetKey(KeyCode.Space);
     }
 }
