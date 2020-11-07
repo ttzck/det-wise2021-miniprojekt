@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 86862522}
   - component: {fileID: 86862521}
   - component: {fileID: 86862524}
+  - component: {fileID: 86862527}
   - component: {fileID: 86862525}
   - component: {fileID: 86862526}
   m_Layer: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a7eeae61b49ee49ae44a8929daeb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 200
+  movementSpeed: 10
 --- !u!212 &86862522
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -288,6 +289,20 @@ PolygonCollider2D:
       - {x: -0.15, y: -0.4}
       - {x: 0.47, y: -0.03}
       - {x: 0.47, y: 0.03}
+--- !u!114 &86862527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 86862520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa1dd46d51b142f49a5cc88f0ec1dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 2742998467387344623, guid: f45429a11645f4670bd4978e3e9c23bf, type: 3}
+  cooldown: 1
 --- !u!1 &744474279
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +314,7 @@ GameObject:
   - component: {fileID: 744474282}
   - component: {fileID: 744474281}
   - component: {fileID: 744474280}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
