@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CharacterShooting : MonoBehaviour
 {
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private float cooldownDuration;
-
-    private float cooldownTimestamp;
+    [SerializeField] private Weapon weapon;
+   
     private ICharacterShootingInputs inputs;
 
     private void Start()
@@ -17,10 +15,10 @@ public class CharacterShooting : MonoBehaviour
 
     private void Update()
     {
-        if (inputs.IsShooting && Time.time > cooldownTimestamp)
+        if (inputs.IsShooting)
         {
-            Instantiate(projectile, transform.position, transform.rotation);
-            cooldownTimestamp = Time.time + cooldownDuration;
+            weapon.Fire();
+            
         }
     }
 }
