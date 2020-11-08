@@ -9,6 +9,8 @@ public class FieldOfView : MonoBehaviour
 
     public float Size => size;
 
+    public LayerMask ViewObstruction => viewObsruction;
+
     public bool PlayerIsInSight { get; private set; }
 
     private void FixedUpdate()

@@ -11,7 +11,7 @@ public class EnemyBehaviourEditor : Editor
     {
         EnemyBehaviour enemyBehaviour = target as EnemyBehaviour;
 
-        if (enemyBehaviour.PatrolPoints.Count() > 1)
+        if (enemyBehaviour.PatrolPoints != null && enemyBehaviour.PatrolPoints.Count() > 1)
         {
             var patrolPointPositions = enemyBehaviour.PatrolPoints
                 .Select(i => i.position)

@@ -3,18 +3,13 @@ using UnityEngine;
 
 public class PatrollingState : IEnemyBehaviourState
 {
-    private const float pointReachedThreshold = .1f;
-
     private int patrolPointIndex = 0;
 
     private EnemyBehaviour enemyBehaviour;
 
-    private List<Transform> patrolPoints;
-
     public PatrollingState(EnemyBehaviour enemyBehaviour) 
     {
         this.enemyBehaviour = enemyBehaviour;
-        patrolPoints = enemyBehaviour.PatrolPoints;
     }
 
     public void Update()
@@ -23,20 +18,25 @@ public class PatrollingState : IEnemyBehaviourState
 
         enemyBehaviour.MovementDirection = DirectionToCurrentPatrolPoint;
         enemyBehaviour.RotationTarget = CurrentPatrolPoint.position;
+
+        if (enemyBehaviour.FieldOfView.PlayerIsInSight)
+        {
+            enemyBehaviour.CurrentState = new ChasingState(enemyBehaviour);
+        }
     }
 
     private void UpdatePatrolPointIndex()
     {
-        if (DistanceToCurrentPatrolPoint < pointReachedThreshold)
+        if (DistanceToCurrentPatrolPoint < EnemyBehaviour.PointReachedThreshold)
         {
             patrolPointIndex++;
 
-            if (patrolPointIndex >= patrolPoints.Count)
+            if (patrolPointIndex >= enemyBehaviour.PatrolPoints.Count)
             { patrolPointIndex = 0; }
         }
     }
 
-    private Transform CurrentPatrolPoint => patrolPoints[patrolPointIndex];
+    private Transform CurrentPatrolPoint => enemyBehaviour.PatrolPoints[patrolPointIndex];
 
     private float DistanceToCurrentPatrolPoint => 
         Vector2.Distance(enemyBehaviour.transform.position, CurrentPatrolPoint.position);

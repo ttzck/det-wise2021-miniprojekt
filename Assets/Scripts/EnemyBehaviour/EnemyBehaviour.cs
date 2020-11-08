@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs
 {
+    public const float PointReachedThreshold = .1f;
+
     public Vector2 MovementDirection { get; set; }
 
     public Vector2 RotationTarget { get; set; }
@@ -12,18 +14,25 @@ public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs
 
     public List<Transform> PatrolPoints => patrolPoints;
 
+    public FieldOfView FieldOfView { get; private set; }
 
-    [SerializeField] private List<Transform> patrolPoints = default;
-
+    [SerializeField] private List<Transform> patrolPoints 
+        = new List<Transform>();
 
     private void Start()
     {
-        MovementDirection = transform.position;
-        RotationTarget = transform.position;
+        FieldOfView = GetComponent<FieldOfView>();
 
-        if (patrolPoints.Count > 0)
+        MovementDirection = Vector2.zero;
+        RotationTarget = transform.position + transform.right;
+
+        if (patrolPoints.Count > 1)
         {
             CurrentState = new PatrollingState(this);
+        }
+        else
+        {
+            CurrentState = new WaitingState(this);
         }
     }
 
