@@ -10,6 +10,15 @@ public class Weapon : MonoBehaviour
     public float cooldownDuration;
     private float cooldownTimestamp;
 
+    private SpriteRenderer spriteRenderer;
+    private Collider2D colliderComponent;
+
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        colliderComponent = GetComponent<Collider2D>();
+    }
+
     public void Fire()
     {
         if (ammunition > 0 && Time.time > cooldownTimestamp)
@@ -18,5 +27,17 @@ public class Weapon : MonoBehaviour
             cooldownTimestamp = Time.time + cooldownDuration;
             ammunition -- ;
         }
+    }
+
+    public void Hide() 
+    {
+        spriteRenderer.enabled = false;
+        colliderComponent.enabled = false;
+    }
+
+    public void Show()
+    {
+        spriteRenderer.enabled = true;
+        colliderComponent.enabled = true;
     }
 }
