@@ -16,15 +16,42 @@ public class WaitingState : IEnemyBehaviourState
 
     public void Update()
     {
+        enemyBehaviour.MovementDirection = DirectionToRandomWalkPositon;
+        enemyBehaviour.RotationTarget = randomWalkPosition;
+        UpdateCurrentState();
+
+        if (DistanceToRandomWalkPosition < EnemyBehaviour.PointReachedThreshold)
+        {
+            randomWalkPosition = GetNewRandomWalkPosition();
+        }
+    }
+
+    private void UpdateCurrentState()
+    {
         if (enemyBehaviour.FieldOfView.PlayerIsInSight)
         {
             enemyBehaviour.CurrentState = new ChasingState(enemyBehaviour);
         }
-        enemyBehaviour.MovementDirection = randomWalkPosition - (Vector2)enemyBehaviour.transform.position;
-        enemyBehaviour.RotationTarget = randomWalkPosition;
-        if (Vector2.Distance(randomWalkPosition, enemyBehaviour.transform.position) < EnemyBehaviour.PointReachedThreshold)
+        else
         {
-            randomWalkPosition = GetNewRandomWalkPosition();
+            LookForReachablePatrolPoints();
+        }
+    }
+
+    private void LookForReachablePatrolPoints()
+    {
+        for (int i = 0; i < enemyBehaviour.PatrolPoints.Count; i++)
+        {
+            bool patrolPointIsReachable = !Physics2D.Linecast(
+                enemyBehaviour.transform.position,
+                enemyBehaviour.PatrolPoints[i].position,
+                enemyBehaviour.FieldOfView.ViewObstruction);
+
+            if (patrolPointIsReachable)
+            {
+                enemyBehaviour.CurrentState = new PatrollingState(enemyBehaviour, i);
+                return;
+            }
         }
     }
 
@@ -33,10 +60,22 @@ public class WaitingState : IEnemyBehaviourState
         Vector2 randomPosition = (Vector2)enemyBehaviour.transform.position 
             + Random.insideUnitCircle * randomWalkRadius;
 
-        if (!Physics2D.Linecast(enemyBehaviour.transform.position, randomPosition, enemyBehaviour.FieldOfView.ViewObstruction))
+        bool isReachable = !Physics2D.Linecast(
+            enemyBehaviour.transform.position, 
+            randomPosition, 
+            enemyBehaviour.FieldOfView.ViewObstruction);
+
+        if (isReachable)
         {
             return randomPosition;
         }
+
         return enemyBehaviour.transform.position;
     }
+
+    private float DistanceToRandomWalkPosition =>
+        Vector2.Distance(randomWalkPosition, enemyBehaviour.transform.position);
+
+    private Vector2 DirectionToRandomWalkPositon =>
+        randomWalkPosition - (Vector2)enemyBehaviour.transform.position;
 }

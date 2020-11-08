@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PatrollingState : IEnemyBehaviourState
 {
-    private int patrolPointIndex = 0;
-
     private EnemyBehaviour enemyBehaviour;
+    private int patrolPointIndex;
 
-    public PatrollingState(EnemyBehaviour enemyBehaviour) 
+    public PatrollingState(EnemyBehaviour enemyBehaviour, int patrolPointIndex = 0) 
     {
         this.enemyBehaviour = enemyBehaviour;
+        this.patrolPointIndex = patrolPointIndex;
     }
 
     public void Update()
