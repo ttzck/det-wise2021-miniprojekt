@@ -11,12 +11,17 @@ public class EnemyBehaviourEditor : Editor
     {
         EnemyBehaviour enemyBehaviour = target as EnemyBehaviour;
 
-        if (enemyBehaviour.PatrolPoints != null && enemyBehaviour.PatrolPoints.Count() > 1)
-        {
-            var patrolPointPositions = enemyBehaviour.PatrolPoints
-                .Select(i => i.position)
-                .ToList();
+        var patrolPointPositions = enemyBehaviour.PatrolPoints
+            .Select(i => i.position)
+            .ToList();
 
+        foreach (var point in patrolPointPositions)
+        {
+            Handles.DrawSolidDisc(point, Vector3.forward, .2f);
+        }
+
+        if (enemyBehaviour.PatrolPoints.Count() > 1)
+        {
             Handles.DrawLine(patrolPointPositions.First(), patrolPointPositions.Last());
 
             if (patrolPointPositions.Count() > 2)

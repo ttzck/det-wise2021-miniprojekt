@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6811487418689555658}
   - component: {fileID: 6306195426683632237}
   - component: {fileID: 6329208206267545016}
+  - component: {fileID: 6390267729339174894}
   - component: {fileID: -7820931494503499054}
   - component: {fileID: -1174098579729265032}
   m_Layer: 9
@@ -125,10 +126,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b30ab87db1b834d9c91cd03cba2909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 90
-  viewObsruction:
+  size: 160
+--- !u!114 &6390267729339174894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7846069749429446599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9518680ecddf9884ba1385d6aef64355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
     serializedVersion: 2
     m_Bits: 256
+  colliderRadius: 0.2
 --- !u!50 &-7820931494503499054
 Rigidbody2D:
   serializedVersion: 4

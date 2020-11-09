@@ -16,15 +16,15 @@ public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs
 
     public FieldOfView FieldOfView { get; private set; }
 
+    public ColliderCaster ColliderCaster { get; private set; }
+
     [SerializeField] private List<Transform> patrolPoints 
         = new List<Transform>();
 
     private void Start()
     {
         FieldOfView = GetComponent<FieldOfView>();
-
-        MovementDirection = Vector2.zero;
-        RotationTarget = transform.position + transform.right;
+        ColliderCaster = GetComponent<ColliderCaster>();
 
         if (patrolPoints.Count > 1)
         {

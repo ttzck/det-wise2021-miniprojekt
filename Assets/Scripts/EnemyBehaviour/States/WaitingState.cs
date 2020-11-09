@@ -42,10 +42,8 @@ public class WaitingState : IEnemyBehaviourState
     {
         for (int i = 0; i < enemyBehaviour.PatrolPoints.Count; i++)
         {
-            bool patrolPointIsReachable = !Physics2D.Linecast(
-                enemyBehaviour.transform.position,
-                enemyBehaviour.PatrolPoints[i].position,
-                enemyBehaviour.FieldOfView.ViewObstruction);
+            bool patrolPointIsReachable = !enemyBehaviour.ColliderCaster.Cast(
+                enemyBehaviour.PatrolPoints[i].position);
 
             if (patrolPointIsReachable)
             {
@@ -60,10 +58,8 @@ public class WaitingState : IEnemyBehaviourState
         Vector2 randomPosition = (Vector2)enemyBehaviour.transform.position 
             + Random.insideUnitCircle * randomWalkRadius;
 
-        bool isReachable = !Physics2D.Linecast(
-            enemyBehaviour.transform.position, 
-            randomPosition, 
-            enemyBehaviour.FieldOfView.ViewObstruction);
+        bool isReachable = !enemyBehaviour.ColliderCaster
+            .Cast(randomPosition);
 
         if (isReachable)
         {

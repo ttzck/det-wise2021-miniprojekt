@@ -19,11 +19,14 @@ public class PatrollingState : IEnemyBehaviourState
         enemyBehaviour.MovementDirection = DirectionToCurrentPatrolPoint;
         enemyBehaviour.RotationTarget = CurrentPatrolPoint.position;
 
-        if (enemyBehaviour.FieldOfView.PlayerIsInSight)
+        if (PlayerIsInSight)
         {
             enemyBehaviour.CurrentState = new ChasingState(enemyBehaviour);
         }
     }
+
+    private bool PlayerIsInSight =>
+        enemyBehaviour.FieldOfView.PlayerIsInSight;
 
     private void UpdatePatrolPointIndex()
     {
