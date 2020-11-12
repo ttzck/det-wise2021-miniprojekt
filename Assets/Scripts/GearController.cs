@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[ExecuteAlways, RequireComponent(typeof(LineRenderer), typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class GearController : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private List<Transform> waypoints = new List<Transform>();
 
+    [Header("Line Settings")]
+    [SerializeField] private GameObject lineElementPrefab;
+    [SerializeField] private float lineElementSpacing;
+    [SerializeField] private GameObject lineCapPrefab;
+
     private Rigidbody2D rb2d;
-    private LineRenderer line;
 
     private int nextWaypointIndex = 1;
     private int previousWaypointIndex = 0;
@@ -18,25 +22,13 @@ public class GearController : MonoBehaviour
 
     private void Start()
     {
-        line = GetComponent<LineRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
+        transform.position = waypoints[0].position;
     }
 
     private void Update()
     {
-        if (Application.isPlaying)
-        {
-            Move();
-        }
-        else
-        {
-            UpdateStartingPosition();
-        }
-    }
-
-    private void Move()
-    {
-        rb2d.velocity = SectionDirection.normalized * speed;
+        rb2d.velocity = CurrentSectionDirection.normalized * speed;
 
         float sectionLength = Vector2.Distance(
             waypoints[previousWaypointIndex].position,
@@ -86,16 +78,42 @@ public class GearController : MonoBehaviour
         previousWaypointIndex--;
     }
 
-    private Vector2 SectionDirection =>
+    private Vector2 CurrentSectionDirection =>
         (waypoints[nextWaypointIndex].position - waypoints[previousWaypointIndex].position);
 
-    private void UpdateStartingPosition()
+    private float SectionLength(int x, int y) => 
+        Vector2.Distance(waypoints[x].position, waypoints[y].position);
+
+    [ContextMenu("Instantiate Line")]
+    private void InstantiateLine()
     {
-        if (waypoints.Count > 0)
+        GameObject line = new GameObject(gameObject.name + " Line");
+        InstantiateLineElements(line.transform);
+        InstantiateLineCaps(line.transform);
+    }
+
+    private void InstantiateLineElements(Transform parent)
+    {
+        for (int i = 0; i < waypoints.Count - 1; i++)
         {
-            transform.position = waypoints[0].position;
+            int sectionElements = Mathf.FloorToInt(SectionLength(i, i + 1) / lineElementSpacing);
+            for (int j = 0; j < sectionElements; j++)
+            {
+                Vector2 sectionElementPos = Vector2.Lerp(
+                    waypoints[i].position, 
+                    waypoints[i + 1].position, 
+                    (float)j / sectionElements);
+
+                Instantiate(lineElementPrefab, sectionElementPos, Quaternion.identity, parent);
+            }
         }
-        line.positionCount = waypoints.Count;
-        line.SetPositions(waypoints.Select(i => i.position - Vector3.forward).ToArray());
+    }
+
+    private void InstantiateLineCaps(Transform parent)
+    {
+        foreach (Transform point in waypoints)
+        {
+            Instantiate(lineCapPrefab, point.position, Quaternion.identity, parent);
+        }
     }
 }
