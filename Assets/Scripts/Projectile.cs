@@ -20,6 +20,10 @@ public class Projectile : MonoBehaviour
         if (collisionMask.Contains(collision.gameObject.layer))
         {
             // <--
+            if (collision.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.Hit();
+            }
             Destroy(gameObject);
         }
     }

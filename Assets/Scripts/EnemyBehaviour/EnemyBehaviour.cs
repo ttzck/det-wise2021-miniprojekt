@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs
+public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs,ICharacterShootingInputs
 {
     public const float PointReachedThreshold = .1f;
 
@@ -17,6 +17,8 @@ public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs
     public FieldOfView FieldOfView { get; private set; }
 
     public ColliderCaster ColliderCaster { get; private set; }
+
+    public bool IsShooting => true;
 
     [SerializeField] private List<Transform> patrolPoints 
         = new List<Transform>();

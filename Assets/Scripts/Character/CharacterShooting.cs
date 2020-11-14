@@ -14,8 +14,12 @@ public class CharacterShooting : MonoBehaviour
     private void Start()
     {
         inputs = GetComponent<ICharacterShootingInputs>();
-        SetWeapon(startingWeapon);
+        if(startingWeapon!= null)
+        {
+            SetWeapon(Instantiate(startingWeapon));
+        }
     }
+        
 
     private void Update()
     {
