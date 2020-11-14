@@ -19,6 +19,7 @@ public class Projectile : MonoBehaviour
     {
         if (collisionMask.Contains(collision.gameObject.layer))
         {
+            // <--
             Destroy(gameObject);
         }
     }

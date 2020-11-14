@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public string Name;
-    public GameObject projectile;
-    public int ammunition;
-    public float cooldownDuration;
-    private float cooldownTimestamp;
+    [SerializeField] private int ammunition;
+    [SerializeField] private float cooldownDuration;
 
+    private float cooldownTimestamp;
     private SpriteRenderer spriteRenderer;
     private Collider2D colliderComponent;
+    private IWeaponShootingBehaviour shootingBehaviour;
 
     private void Start()
     {
+        shootingBehaviour = GetComponent<IWeaponShootingBehaviour>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         colliderComponent = GetComponent<Collider2D>();
     }
@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
     {
         if (ammunition > 0 && Time.time > cooldownTimestamp)
         {
-            Instantiate(projectile, transform.position, transform.rotation);
+            shootingBehaviour.Fire();
             cooldownTimestamp = Time.time + cooldownDuration;
             ammunition -- ;
         }
@@ -31,13 +31,27 @@ public class Weapon : MonoBehaviour
 
     public void Hide() 
     {
-        spriteRenderer.enabled = false;
-        colliderComponent.enabled = false;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = false;
+        }
+
+        if (colliderComponent != null)
+        {
+            colliderComponent.enabled = false;
+        }
     }
 
     public void Show()
     {
-        spriteRenderer.enabled = true;
-        colliderComponent.enabled = true;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.enabled = true;
+        }
+
+        if (colliderComponent != null)
+        {
+            colliderComponent.enabled = true;
+        }
     }
 }
