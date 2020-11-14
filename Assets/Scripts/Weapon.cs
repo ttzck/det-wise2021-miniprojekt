@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
     private Collider2D colliderComponent;
     private IWeaponShootingBehaviour shootingBehaviour;
 
-    private void Start()
+    private void Awake()
     {
         shootingBehaviour = GetComponent<IWeaponShootingBehaviour>();
         spriteRenderer = GetComponent<SpriteRenderer>();
