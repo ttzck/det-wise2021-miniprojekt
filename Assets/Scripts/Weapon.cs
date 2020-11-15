@@ -12,6 +12,8 @@ public class Weapon : MonoBehaviour
     private Collider2D colliderComponent;
     private IWeaponShootingBehaviour shootingBehaviour;
 
+    public int Ammunition => ammunition;
+
     private void Awake()
     {
         shootingBehaviour = GetComponent<IWeaponShootingBehaviour>();

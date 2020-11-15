@@ -4,9 +4,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-
-    void Hit();
-    
+    void Hit();   
 }
 
 

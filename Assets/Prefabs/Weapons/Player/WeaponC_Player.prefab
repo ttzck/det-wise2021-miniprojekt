@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26de076431484255bc9a3f717df9873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunition: 10
-  cooldownDuration: 1
+  ammunition: 100
+  cooldownDuration: 0.1
 --- !u!114 &912975973439853222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2742998467387344623, guid: f45429a11645f4670bd4978e3e9c23bf, type: 3}
+  angle: 10
 --- !u!58 &8519439103547223746
 CircleCollider2D:
   m_ObjectHideFlags: 0

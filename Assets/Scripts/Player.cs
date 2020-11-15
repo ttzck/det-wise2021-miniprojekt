@@ -11,7 +11,6 @@ public class Player : MonoBehaviour , IDamageable
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
-
     }
 
     private void Awake()
