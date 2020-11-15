@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, INotify
 {
     [SerializeField] private float speed;
     [SerializeField] private LayerMask collisionMask;
 
     private Rigidbody2D rb2D;
+
+    public event Action Event;
 
     private void Start()
     {
@@ -19,12 +22,12 @@ public class Projectile : MonoBehaviour
     {
         if (collisionMask.Contains(collision.gameObject.layer))
         {
-            // <--
             if (collision.TryGetComponent(out IDamageable damageable))
             {
                 damageable.Hit();
             }
             Destroy(gameObject);
+            Event?.Invoke();
         }
     }
 }
