@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1146131459778202465}
   - component: {fileID: 1146131459778202466}
   - component: {fileID: 1146131459778202468}
+  - component: {fileID: -2549397413381038735}
   m_Layer: 0
   m_Name: Gear
   m_TagString: Untagged
@@ -51,6 +52,9 @@ MonoBehaviour:
   lineElementPrefab: {fileID: 937766430978022826, guid: 26fed6223fc7b604a94a520282ba41aa, type: 3}
   lineElementSpacing: 0.5
   lineCapPrefab: {fileID: 652290272198460663, guid: ab49d31806b0ef44ca40450cc0e62f15, type: 3}
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!212 &1146131459778202465
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -142,3 +146,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &-2549397413381038735
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1146131459778202478}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1908865}
+  serializedVersion: 2
+  m_Radius: 1.8091135

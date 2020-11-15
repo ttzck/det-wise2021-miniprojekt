@@ -61,6 +61,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2742998467387344623, guid: f45429a11645f4670bd4978e3e9c23bf, type: 3}
+  angle: 30
+  numberOfProjectiles: 10
 --- !u!58 &777453117297555815
 CircleCollider2D:
   m_ObjectHideFlags: 0

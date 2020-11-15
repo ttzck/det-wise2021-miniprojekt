@@ -14,6 +14,7 @@ public class GearController : MonoBehaviour
     [SerializeField] private GameObject lineElementPrefab;
     [SerializeField] private float lineElementSpacing;
     [SerializeField] private GameObject lineCapPrefab;
+    [SerializeField] private LayerMask collisionMask;
 
     private Rigidbody2D rb2d;
 
@@ -117,5 +118,17 @@ public class GearController : MonoBehaviour
         {
             Instantiate(lineCapPrefab, point.position, Quaternion.identity, parent);
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collisionMask.Contains(collision.gameObject.layer))
+        {
+            if (collision.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.Hit();
+            }
+        }
+
+
     }
 }
