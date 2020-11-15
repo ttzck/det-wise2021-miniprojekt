@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour , IDamageable
+public class Player : MonoBehaviour, IDamageable
 {
     public static Player Instance { get; private set; }
 

@@ -10,10 +10,8 @@ public class MultipleProjectileFire : MonoBehaviour, IWeaponShootingBehaviour
     {
         for (int i = 0; i < numberOfProjectiles; i++)
         {
-
-            float z =( angle / (numberOfProjectiles-1 )* i)- angle/2;
+            float z = (angle / (numberOfProjectiles - 1) * i) - angle / 2;
             Instantiate(projectile, transform.position, transform.rotation * Quaternion.Euler(0, 0, z));
-          
         }
-        }
+    }
 }

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Projectile : MonoBehaviour, INotify
+public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private LayerMask collisionMask;
+    [SerializeField, Range(0,1)] private float screenShakeTrauma;
+    [SerializeField] private GameObject explosionPrefab;
 
     private Rigidbody2D rb2D;
-
-    public event Action Event;
 
     private void Start()
     {
@@ -27,7 +27,8 @@ public class Projectile : MonoBehaviour, INotify
                 damageable.Hit();
             }
             Destroy(gameObject);
-            Event?.Invoke();
+            ScreenShake.Instance.AddTrauma(screenShakeTrauma);
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
         }
     }
 }

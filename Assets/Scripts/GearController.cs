@@ -128,7 +128,5 @@ public class GearController : MonoBehaviour
                 damageable.Hit();
             }
         }
-
-
     }
 }

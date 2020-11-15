@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1651005971535383131}
   - component: {fileID: 1651005971535383130}
   - component: {fileID: 286628834318248169}
-  - component: {fileID: -9163645351991350662}
   m_Layer: 0
   m_Name: Projectile_Enemy
   m_TagString: Untagged
@@ -51,6 +50,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 2304
+  screenShakeTrauma: 0.5
+  explosionPrefab: {fileID: 8857189038426785884, guid: d65b3a7c25b5a1c4991e3368d27ab651, type: 3}
 --- !u!212 &1651005971535383131
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -139,16 +140,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
---- !u!114 &-9163645351991350662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651005971535383128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02447f4da73538646a965e9e33d67570, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  object: {fileID: 8857189038426785884, guid: d65b3a7c25b5a1c4991e3368d27ab651, type: 3}
