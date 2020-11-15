@@ -23,18 +23,9 @@ public class WeaponHandler : MonoBehaviour
 
     private void PickUpWeapon()
     {
-        Collider2D pickedUp = Physics2D.OverlapCircle(transform.position, weaponPickUpRange, weaponLayerMask);
+        Collider2D pickedUpObject = Physics2D.OverlapCircle(transform.position, weaponPickUpRange, weaponLayerMask);
+        Weapon pickedUpWeapon = pickedUpObject != null ? pickedUpObject.GetComponent<Weapon>() : null;
 
-        if (characterShooting.Weapon != null)
-        {
-            characterShooting.Weapon.transform.parent = null;
-            characterShooting.Weapon.Show();
-        }
-
-        if (pickedUp != null)
-        {
-            Weapon pickedUpWeapon = pickedUp.GetComponent<Weapon>();
-            characterShooting.SetWeapon(pickedUpWeapon);
-        }
+        characterShooting.SetWeapon(pickedUpWeapon);
     }
 }
