@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterShooting : MonoBehaviour
 {
@@ -13,12 +14,12 @@ public class CharacterShooting : MonoBehaviour
     private void Start()
     {
         inputs = GetComponent<ICharacterShootingInputs>();
-        if (startingWeapon != null)
+        if(startingWeapon!= null)
         {
             SetWeapon(Instantiate(startingWeapon));
         }
     }
-
+        
 
     private void Update()
     {
@@ -28,22 +29,18 @@ public class CharacterShooting : MonoBehaviour
         }
     }
 
-    public void SetWeapon(Weapon newWeapon)
+    public void SetWeapon(Weapon weapon)
     {
-        if (Weapon != null)
+        if (weapon != null)
         {
-            Weapon.transform.parent = null;
-            Weapon.Show();
-        }
+            weapon.transform.parent = transform;
+            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localRotation = Quaternion.identity;
+            weapon.Hide();
 
-        Weapon = newWeapon;
+            Weapon = weapon;
 
-        if (Weapon != null)
-        {
-            Weapon.transform.parent = transform;
-            Weapon.transform.localPosition = Vector3.zero;
-            Weapon.transform.localRotation = Quaternion.identity;
-            Weapon.Hide();
+         
         }
     }
 }
