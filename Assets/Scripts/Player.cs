@@ -9,8 +9,8 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Hit()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
+        gameObject.SetActive(false);
+        RestartPrompt.Instance.Show();
     }
 
     private void Awake()

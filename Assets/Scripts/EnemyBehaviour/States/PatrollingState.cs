@@ -18,6 +18,7 @@ public class PatrollingState : IEnemyBehaviourState
 
         enemyBehaviour.MovementDirection = DirectionToCurrentPatrolPoint;
         enemyBehaviour.RotationTarget = CurrentPatrolPoint.position;
+        enemyBehaviour.IsShooting = false;
 
         if (PlayerIsInSight)
         {

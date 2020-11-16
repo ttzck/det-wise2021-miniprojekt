@@ -21,6 +21,7 @@ public class ChasingState : IEnemyBehaviourState
 
         enemyBehaviour.MovementDirection = DirectionToPlayerShadow;
         enemyBehaviour.RotationTarget = playerShadow;
+        enemyBehaviour.IsShooting = PlayerIsInSight;
 
         if (DistanceToPlayerShadow < EnemyBehaviour.PointReachedThreshold)
         {

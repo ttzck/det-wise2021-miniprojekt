@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+
+#if UNITY_EDITOR
 using UnityEditor.SceneManagement;
+#endif
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class GearController : MonoBehaviour
@@ -92,7 +93,9 @@ public class GearController : MonoBehaviour
         GameObject line = new GameObject(gameObject.name + " Line");
         InstantiateLineElements(line.transform);
         InstantiateLineCaps(line.transform);
+#if UNITY_EDITOR
         EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+#endif
     }
 
     private void InstantiateLineElements(Transform parent)

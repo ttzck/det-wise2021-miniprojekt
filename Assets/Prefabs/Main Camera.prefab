@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 302809092425681657}
   - component: {fileID: 302809092425681656}
   - component: {fileID: 8452822782690704680}
+  - component: {fileID: 3399700644647264194}
+  - component: {fileID: 1655933049142367128}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -99,3 +101,29 @@ MonoBehaviour:
   maxAngle: 0.05
   maxOffset: 0.1
   traumaDecrease: 2
+--- !u!114 &3399700644647264194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302809092425681659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96eb5c3522c8e6b4fa3a57840d3c2576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuPicker: {fileID: 1655933049142367128}
+--- !u!114 &1655933049142367128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 302809092425681659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e785b9b666ecca4da14f9973785ac3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenePath: Assets/Scenes/mainMenu.unity

@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs, ICharacterShootingInputs, IDamageable
 {
-    public const float PointReachedThreshold = .1f;
+    public const float PointReachedThreshold = .5f;
+
+    private const float shootingDelay = .1f;
 
     public Vector2 MovementDirection { get; set; }
 
@@ -12,13 +14,32 @@ public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs, ICharacte
 
     public IEnemyBehaviourState CurrentState { get; set; }
 
+    public bool IsShooting 
+    { 
+        get 
+        {
+            return Time.time > shootingTimestamp + shootingDelay;
+        } 
+        set 
+        {
+            if (value)
+            {
+                shootingTimestamp = Mathf.Min(Time.time, shootingTimestamp);
+            }
+            else
+            {
+                shootingTimestamp = float.PositiveInfinity;
+            }
+        } 
+    }
+
+    private float shootingTimestamp = float.PositiveInfinity;
+
     public List<Transform> PatrolPoints => patrolPoints;
 
     public FieldOfView FieldOfView { get; private set; }
 
     public ColliderCaster ColliderCaster { get; private set; }
-
-    public bool IsShooting => FieldOfView.PlayerIsInSight;
 
     [SerializeField] private List<Transform> patrolPoints 
         = new List<Transform>();

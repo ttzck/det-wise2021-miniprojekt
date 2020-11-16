@@ -50,7 +50,7 @@ MonoBehaviour:
   speed: 10
   waypoints: []
   lineElementPrefab: {fileID: 937766430978022826, guid: 26fed6223fc7b604a94a520282ba41aa, type: 3}
-  lineElementSpacing: 0.5
+  lineElementSpacing: 1
   lineCapPrefab: {fileID: 652290272198460663, guid: ab49d31806b0ef44ca40450cc0e62f15, type: 3}
   collisionMask:
     serializedVersion: 2

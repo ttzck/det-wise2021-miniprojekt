@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private int ammunition;
     [SerializeField] private float cooldownDuration;
+    [SerializeField] private bool infiniteAmmunition;
 
     private float cooldownTimestamp;
     private SpriteRenderer spriteRenderer;
@@ -23,7 +24,7 @@ public class Weapon : MonoBehaviour
 
     public void Fire()
     {
-        if (ammunition > 0 && Time.time > cooldownTimestamp)
+        if ((ammunition > 0 || infiniteAmmunition) && Time.time > cooldownTimestamp)
         {
             shootingBehaviour.Fire();
             cooldownTimestamp = Time.time + cooldownDuration;

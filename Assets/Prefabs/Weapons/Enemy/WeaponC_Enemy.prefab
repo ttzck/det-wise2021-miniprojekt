@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26de076431484255bc9a3f717df9873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunition: 2147483647
+  ammunition: 0
   cooldownDuration: 0.1
+  infiniteAmmunition: 1
 --- !u!114 &2563618174383066374
 MonoBehaviour:
   m_ObjectHideFlags: 0

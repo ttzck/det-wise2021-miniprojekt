@@ -18,6 +18,8 @@ public class WaitingState : IEnemyBehaviourState
     {
         enemyBehaviour.MovementDirection = DirectionToRandomWalkPositon;
         enemyBehaviour.RotationTarget = randomWalkPosition;
+        enemyBehaviour.IsShooting = false;
+
         UpdateCurrentState();
 
         if (DistanceToRandomWalkPosition < EnemyBehaviour.PointReachedThreshold)

@@ -46,8 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26de076431484255bc9a3f717df9873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammunition: 10
+  ammunition: 5
   cooldownDuration: 1
+  infiniteAmmunition: 0
 --- !u!114 &3172518668580636240
 MonoBehaviour:
   m_ObjectHideFlags: 0
