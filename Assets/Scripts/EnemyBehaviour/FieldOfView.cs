@@ -24,6 +24,6 @@ public class FieldOfView : MonoBehaviour
         bool playerIsInFOV = Mathf.Abs(angleToPlayer) < size * .5f;
         bool viewIsObstructed = colliderCaster.Cast(playerPosition);
 
-        PlayerIsInSight = playerIsInFOV && !viewIsObstructed;
+        PlayerIsInSight = playerIsInFOV && !viewIsObstructed && Player.Instance.gameObject.activeSelf;
     }
 }
