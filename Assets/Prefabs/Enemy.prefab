@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolPoints: []
+  destroySoundEffect: {fileID: 4731915575484952327, guid: 43381b3c7b4c1c94b8a64a8071c2291a, type: 3}
 --- !u!114 &6329208206267545016
 MonoBehaviour:
   m_ObjectHideFlags: 0

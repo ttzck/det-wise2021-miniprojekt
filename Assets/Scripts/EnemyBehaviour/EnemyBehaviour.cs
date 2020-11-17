@@ -44,6 +44,8 @@ public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs, ICharacte
     [SerializeField] private List<Transform> patrolPoints 
         = new List<Transform>();
 
+    [SerializeField] private GameObject destroySoundEffect;
+
     private void Start()
     {
         FieldOfView = GetComponent<FieldOfView>();
@@ -67,5 +69,6 @@ public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs, ICharacte
     public void Hit()
     {
         Destroy(gameObject);
+        Instantiate(destroySoundEffect);
     }
 }
