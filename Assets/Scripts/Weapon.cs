@@ -7,6 +7,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int ammunition;
     [SerializeField] private float cooldownDuration;
     [SerializeField] private bool infiniteAmmunition;
+    [SerializeField] private GameObject soundEffect;
 
     private float cooldownTimestamp;
     private SpriteRenderer spriteRenderer;
@@ -29,6 +30,7 @@ public class Weapon : MonoBehaviour
             shootingBehaviour.Fire();
             cooldownTimestamp = Time.time + cooldownDuration;
             ammunition -- ;
+            Instantiate(soundEffect);
         }
     }
 
