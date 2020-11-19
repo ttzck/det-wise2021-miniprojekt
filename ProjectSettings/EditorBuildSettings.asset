@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: 47b677dbfe0cf604590aadf828d25490
+  - enabled: 1
+    path: Assets/Scenes/Big City.unity
+    guid: 79b5d4b1c91797845a5095d0d90b5da8
+  - enabled: 1
+    path: Assets/Scenes/Arena.unity
+    guid: ae7776c870389dd4cb4ff7bbf2ce055f
   m_configObjects: {}

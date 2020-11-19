@@ -4927,7 +4927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a7eeae61b49ee49ae44a8929daeb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 6
 --- !u!114 &6306195426683632237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4942,6 +4942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolPoints: []
   destroySoundEffect: {fileID: 4731915575484952327, guid: 43381b3c7b4c1c94b8a64a8071c2291a, type: 3}
+  deathExplosion: {fileID: 392790138708524604, guid: 28173efcaccc7cc4e8b482738dda13f6, type: 3}
 --- !u!114 &6329208206267545016
 MonoBehaviour:
   m_ObjectHideFlags: 0

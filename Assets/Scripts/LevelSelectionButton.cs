@@ -12,7 +12,13 @@ public class LevelSelectionButton : MonoBehaviour
     private void Start()
     {
         var textMesh = GetComponentInChildren<TextMeshProUGUI>();
-        textMesh.text = Path.GetFileNameWithoutExtension(ScenePath);
+        var text = Path.GetFileNameWithoutExtension(ScenePath);
+        var time = PlayerPrefs.GetFloat(ScenePath);
+        if (time != default)
+        {
+            text += " " + time.ToString("0.00") + " seconds";
+        }
+        textMesh.text = text;
     }
 
     public void OnClick()

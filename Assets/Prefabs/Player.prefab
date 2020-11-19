@@ -5019,6 +5019,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e0065f59b0ab3d4e9e1bc995492633c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverSoundEffect: {fileID: 6451349372032917425, guid: 37d7ef5174acfc247a28e6d10a787f87, type: 3}
+  deathExplosion: {fileID: 7449798930028470381, guid: 3f1c4aa4960ca9f43bb42d7bcf6dd235, type: 3}
 --- !u!114 &3142836398210304512
 MonoBehaviour:
   m_ObjectHideFlags: 0

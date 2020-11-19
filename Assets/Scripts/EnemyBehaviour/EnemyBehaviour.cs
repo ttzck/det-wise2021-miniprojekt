@@ -45,6 +45,7 @@ public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs, ICharacte
         = new List<Transform>();
 
     [SerializeField] private GameObject destroySoundEffect;
+    [SerializeField] private GameObject deathExplosion;
 
     private void Start()
     {
@@ -70,5 +71,6 @@ public class EnemyBehaviour : MonoBehaviour, ICharacterMovementInputs, ICharacte
     {
         Destroy(gameObject);
         Instantiate(destroySoundEffect);
+        Instantiate(deathExplosion, transform.position, Quaternion.identity);
     }
 }
